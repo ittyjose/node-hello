@@ -1,16 +1,28 @@
-const http = require('http');
+const express = require("express");
+const bodyParser = require("body-parser");
 const https = require('https');
 
 
-const port = process.env.PORT || 3000;
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
+const restService = express();
+ restService.use(
+  bodyParser.urlencoded({
+    extended: true
+  })
+);
 
+restService.use(bodyParser.json());
+
+restService.get("/", function(req, res) {
 getweather().then((response)=>{
   let msg=JSON.parse(response).consolidated_weather[0].the_temp
   msg=JSON.stringify(msg)+' C';
-  res.end(msg);
+  //res.end(msg);
+  return res.json({
+    speech: msg,
+    displayText: msg,
+    source: "webhook-echo-sample"
+  });
 });
    
 });
@@ -37,6 +49,6 @@ function getweather(){
   });
 })
 }
-server.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}/`);
+restService.listen(process.env.PORT || 8000, function() {
+  console.log("Server up and listening");
 });
