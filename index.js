@@ -17,7 +17,7 @@ const server = http.createServer((req, res) => {
 
   // The whole response has been received. Print out the result.
   resp.on('end', () => {
-    msg=JSON.parse(data).explanation);
+    msg=JSON.parse(data));
       res.end(msg);
   });
 
