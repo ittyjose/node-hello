@@ -9,7 +9,7 @@ const restService = express();
 
 
 
-restService.get("/", function(req, res) {
+restService.post("/", function(req, res) {
 getweather().then((response)=>{
   let msg=JSON.parse(response).consolidated_weather[0].the_temp
   msg=JSON.stringify(msg)+' C';
