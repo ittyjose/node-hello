@@ -9,12 +9,13 @@ const server = http.createServer((req, res) => {
   let msg = 'Hello Node!\n'
   axios.get('https://www.metaweather.com/api/location/44418/')
   .then(response => {
-   msg = msg+ response
-    res.end(msg);
+   msg = msg+ response;
+   
   })
   .catch(error => {
     console.log(error);
   });
+   res.end(msg);
   
 });
 
