@@ -1,10 +1,21 @@
 const http = require('http');
+const axios = require('axios');
+
+
 const port = process.env.PORT || 3000;
 
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
-  const msg = 'Hello Node!\n'
-  res.end(msg);
+  let msg = 'Hello Node!\n'
+  axios.get('https://www.metaweather.com/api/location/44418/')
+  .then(response => {
+   msg = msg+ response
+    res.end(msg);
+  })
+  .catch(error => {
+    console.log(error);
+  });
+  
 });
 
 server.listen(port, () => {
