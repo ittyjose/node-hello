@@ -1,4 +1,5 @@
 const http = require('http');
+const https = require('https');
 //const axios = require('axios');
 
 
@@ -7,7 +8,7 @@ const port = process.env.PORT || 3000;
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
   let msg = 'Hello Node!\n'
-  http.get('http://www.metaweather.com/api/location/44418/', (resp) => {
+  https.get('http://www.metaweather.com/api/location/44418/', (resp) => {
   let data = '';
 
   // A chunk of data has been recieved.
