@@ -1,17 +1,13 @@
+const http = require('http');
 const express = require("express");
-const bodyParser = require("body-parser");
+
 const https = require('https');
 
 
 
 const restService = express();
- restService.use(
-  bodyParser.urlencoded({
-    extended: true
-  })
-);
 
-restService.use(bodyParser.json());
+
 
 restService.get("/", function(req, res) {
 getweather().then((response)=>{
