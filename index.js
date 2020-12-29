@@ -33,7 +33,7 @@ const server = http.createServer((req, res) => {
  //   console.log(error);
  // });
 
-  
+    res.end(msg);
 });
 
 server.listen(port, () => {
