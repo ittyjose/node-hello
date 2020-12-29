@@ -7,7 +7,7 @@ const port = process.env.PORT || 3000;
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
   let msg = 'Hello Node!\n'
-  https.get('https://www.metaweather.com/api/location/44418/', (resp) => {
+  http.get('https://www.metaweather.com/api/location/44418/', (resp) => {
   let data = '';
 
   // A chunk of data has been recieved.
